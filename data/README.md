@@ -4,20 +4,20 @@ Large precomputed feature tensors are distributed outside Git.
 
 Download the final archives from:
 
-[MINTNN final feature archives](https://drive.google.com/drive/folders/1Y5hwU1WikPbT5pzhIL0ocmJcf9MWE1mv)
+[MITNN final feature archives](https://drive.google.com/drive/folders/1Y5hwU1WikPbT5pzhIL0ocmJcf9MWE1mv)
 
 Expected archive names:
 
 ```text
-MINTNN_MOF_final_features.zip
-MINTNN_LD50_final_features.zip
+MITNN_MOF_final_features.zip
+MITNN_LD50_final_features.zip
 ```
 
 Extract both archives from the repository root:
 
 ```bash
-unzip MINTNN_MOF_final_features.zip
-unzip MINTNN_LD50_final_features.zip
+unzip MITNN_MOF_final_features.zip
+unzip MITNN_LD50_final_features.zip
 ```
 
 Expected directories after extraction:

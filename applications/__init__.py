@@ -1,1 +1,1 @@
-"""Application-level MINTNN training scripts."""
+"""Application-level MITNN training scripts."""

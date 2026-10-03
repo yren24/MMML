@@ -1,6 +1,6 @@
 {
   "paper": {
-    "title": "MINTNN: Mathematical Invariant-Enabled Topological Neural Networks",
+    "title": "MITNN: Mathematical Invariant-Enabled Topological Neural Networks",
     "tasks_in_this_repository": [
       "MOF O2/N2 uptake",
       "LD50 quantitative toxicity"

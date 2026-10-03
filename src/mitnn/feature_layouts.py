@@ -1,4 +1,4 @@
-"""Feature-layout constants for the final MOF and LD50 MINTNN experiments."""
+"""Feature-layout constants for the final MOF and LD50 MITNN experiments."""
 
 MOF_FEATURE_LAYOUTS = {
     "homology": {

@@ -1,4 +1,4 @@
-"""Shared command-building utilities for MINTNN application scripts."""
+"""Shared command-building utilities for MITNN application scripts."""
 
 from __future__ import annotations
 

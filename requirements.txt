@@ -1,4 +1,4 @@
-# Direct runtime dependencies for the public MINTNN scripts.
+# Direct runtime dependencies for the public MITNN scripts.
 # Conda environment.yml is recommended for full GPU/SNN reproduction.
 # This pip list is a fallback and does not pin CUDA-specific wheels.
 numpy==1.26.4

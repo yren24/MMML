@@ -1,17 +1,17 @@
-# MINTNN
+# MITNN
 
 ## Overview
 
-**MINTNN** is a molecular and materials learning framework for studying how multiscale mathematical invariant representations interact with neural processing mechanisms. It maps three-dimensional molecular and materials structures to mathematical domains such as bipartite graphs, simplicial complexes, and differentiable manifolds; constructs complementary invariant families including persistent homology, persistent Laplacian, commutative-algebraic descriptors, element-interactive curvature, and Forman persistent Ricci curvature; and pairs these features with ANN, CNN, SNN, and CTNN architectures. This release focuses on the MOF gas-uptake and LD50 toxicity applications, including precomputed features, final component settings, training scripts, and consensus utilities.
+**MITNN** is a molecular and materials learning framework for studying how multiscale mathematical invariant representations interact with neural processing mechanisms. It maps three-dimensional molecular and materials structures to mathematical domains such as bipartite graphs, simplicial complexes, and differentiable manifolds; constructs complementary invariant families including persistent homology, persistent Laplacian, commutative-algebraic descriptors, element-interactive curvature, and Forman persistent Ricci curvature; and pairs these features with ANN, CNN, SNN, and CTNN architectures. This release focuses on the MOF gas-uptake and LD50 toxicity applications, including precomputed features, final component settings, training scripts, and consensus utilities.
 
 <p align="center">
-  <img src="assets/mintnn_workflow.png" alt="MINTNN workflow" width="78%">
+  <img src="assets/mitnn_workflow.png" alt="MITNN workflow" width="78%">
 </p>
 
 ## Repository Structure
 
 ```text
-MINTNN/
+MITNN/
 |-- applications/
 |   |-- ld50/              # LD50 toxicity component training scripts
 |   `-- mof/               # MOF gas-uptake scripts and MOF CTNN model
@@ -21,7 +21,7 @@ MINTNN/
 |-- docs/                  # Additional notes on data, features, architectures, and environment
 |-- metadata/              # Machine-readable final model settings and reported metrics
 |-- scripts/               # Training dispatcher, evaluation, consensus, and audit utilities
-|-- src/mintnn/            # Reusable architecture definitions
+|-- src/mitnn/             # Reusable architecture definitions
 |-- environment.yml
 |-- requirements.txt
 `-- README.md
@@ -31,13 +31,13 @@ MINTNN/
 
 The released feature archives are hosted on Google Drive:
 
-[MINTNN final feature archives](https://drive.google.com/drive/folders/1Y5hwU1WikPbT5pzhIL0ocmJcf9MWE1mv)
+[MITNN final feature archives](https://drive.google.com/drive/folders/1Y5hwU1WikPbT5pzhIL0ocmJcf9MWE1mv)
 
 The folder is expected to contain:
 
 ```text
-MINTNN_MOF_final_features.zip
-MINTNN_LD50_final_features.zip
+MITNN_MOF_final_features.zip
+MITNN_LD50_final_features.zip
 ```
 
 A concise manifest of the released feature groups is provided in:
@@ -53,15 +53,15 @@ The feature archives are intentionally not stored directly in the Git repository
 Clone the repository:
 
 ```bash
-git clone https://github.com/yren24/MINTNN.git
-cd MINTNN
+git clone https://github.com/yren24/MITNN.git
+cd MITNN
 ```
 
 Create the recommended Conda environment:
 
 ```bash
 conda env create -f environment.yml
-conda activate mintnn
+conda activate mitnn
 ```
 
 Alternatively, install the Python requirements into an existing environment:
@@ -81,8 +81,8 @@ python scripts/check_environment.py
 Download the two feature archives from Google Drive and extract them from the repository root:
 
 ```bash
-unzip MINTNN_MOF_final_features.zip
-unzip MINTNN_LD50_final_features.zip
+unzip MITNN_MOF_final_features.zip
+unzip MITNN_LD50_final_features.zip
 ```
 
 This should create the `data/mof/` and `data/ld50/` directories shown above. The application scripts use these compact feature family names directly: `PH`, `PL`, `CA`, `EIC`, and `FPRC`.
@@ -92,8 +92,8 @@ To verify a downloaded feature package before training:
 
 ```bash
 python scripts/audit_feature_archives.py \
-    --mof-zip MINTNN_MOF_final_features.zip \
-    --ld50-zip MINTNN_LD50_final_features.zip
+    --mof-zip MITNN_MOF_final_features.zip \
+    --ld50-zip MITNN_LD50_final_features.zip
 ```
 
 The audit checks that every label entry has the expected `.npy` feature file under the directory names used by the code.
@@ -182,11 +182,11 @@ The consensus script aligns samples by name, checks target consistency, averages
 
 ## Citation
 
-If you use this repository, please cite the MINTNN manuscript:
+If you use this repository, please cite the MITNN manuscript:
 
 ```bibtex
-@misc{ren2026mintnn,
-  title  = {MINTNN: Mathematical Invariant-Enabled Topological Neural Networks for Molecular and Materials Property Prediction},
+@misc{ren2026mitnn,
+  title  = {MITNN: Mathematical Invariant-Enabled Topological Neural Networks for Molecular and Materials Property Prediction},
   author = {Ren, Yiming and Liu, Xiang and Hajij, Mustafa and Lio, Pietro and Wei, Guo-Wei},
   year   = {2026}
 }

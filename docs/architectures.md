@@ -1,10 +1,10 @@
 # Architecture Summary
 
-MINTNN evaluates the same mathematical invariant families with four neural architectures.
+MITNN evaluates the same mathematical invariant families with four neural architectures.
 
 ## ANN
 
-`src/mintnn/architectures/ann.py`
+`src/mitnn/architectures/ann.py`
 
 The ANN is a batch-normalized MLP on flattened feature vectors:
 
@@ -19,7 +19,7 @@ Final hidden dimensions:
 
 ## CNN
 
-`src/mintnn/architectures/cnn.py`
+`src/mitnn/architectures/cnn.py`
 
 The CNN treats the filtration or interaction-scale axis as a one-dimensional sequence:
 
@@ -34,7 +34,7 @@ Final presets:
 
 ## SNN
 
-`src/mintnn/architectures/snn.py`
+`src/mitnn/architectures/snn.py`
 
 Two task-specific SNN forms are included:
 
@@ -45,7 +45,7 @@ The final LD50 pair-edge SNN uses `GATv2Conv` by default and requires `torch-geo
 
 ## CTNN / CoPresheaf
 
-`src/mintnn/architectures/ctnn.py`
+`src/mitnn/architectures/ctnn.py`
 
 The CTNN is implemented as a CoPresheaf transformer:
 

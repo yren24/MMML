@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build consensus predictions from trained MINTNN component outputs."""
+"""Build consensus predictions from trained MITNN component outputs."""
 
 from __future__ import annotations
 

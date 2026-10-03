@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Dispatch MINTNN component training commands."""
+"""Dispatch MITNN component training commands."""
 
 from __future__ import annotations
 
@@ -227,7 +227,7 @@ def build_command(args: argparse.Namespace, passthrough: list[str]) -> list[str]
 def parse_args() -> tuple[argparse.Namespace, list[str]]:
     parser = argparse.ArgumentParser(
         description=(
-            "Run a MINTNN application component defined by application, "
+            "Run a MITNN application component defined by application, "
             "mathematical invariant, and neural architecture."
         )
     )

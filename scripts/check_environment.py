@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Check that the MINTNN runtime dependencies can be imported."""
+"""Check that the MITNN runtime dependencies can be imported."""
 
 from __future__ import annotations
 

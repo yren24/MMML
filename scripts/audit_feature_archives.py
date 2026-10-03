@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Audit released MINTNN feature archives without extracting them."""
+"""Audit released MITNN feature archives without extracting them."""
 
 from __future__ import annotations
 

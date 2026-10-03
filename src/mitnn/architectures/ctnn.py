@@ -1,4 +1,4 @@
-"""CoPresheaf transformer, referred to as CTNN in the MINTNN paper."""
+"""CoPresheaf transformer, referred to as CTNN in the MITNN paper."""
 
 from __future__ import annotations
 
