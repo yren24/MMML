@@ -6,7 +6,15 @@
 
 **MMML** is a learning framework that treats *mathematical diversity itself* as a source of multimodality. Instead of distinguishing modalities by data type or source, MMML derives multiple representations of the same scientific structure from distinct mathematical formulations, and pairs them with a diverse set of deep learning architectures.
 
-The mathematical modalities are rooted in algebraic topology, combinatorial spectral theory, commutative algebra, differential geometry, and discrete curvature. Three-dimensional molecular and materials structures are first mapped to mathematical domains such as bipartite graphs, simplicial complexes (Vietoris-Rips and alpha complexes), and differentiable manifolds. Five complementary modality families are then constructed from those domains:
+The mathematical modalities are rooted in algebraic topology, combinatorial spectral theory, commutative algebra, differential geometry, and discrete curvature. Three-dimensional molecular and materials structures are first mapped to mathematical domains such as bipartite graphs, simplicial complexes (Vietoris-Rips and alpha complexes), and differentiable manifolds. Five complementary modality families are constructed from those domains, each paired with four neural architectures that span topological and conventional designs. A consensus prediction is formed by aggregating selected modality-architecture base models.
+
+The manuscript validates MMML on four benchmarks: protein-ligand binding affinity, metal-organic framework gas uptake, mutation-induced protein solubility, and molecular toxicity. This release focuses on the MOF gas-uptake and LD50 toxicity applications, including precomputed features, final component settings, training scripts, and consensus utilities.
+
+<p align="center">
+  <img src="assets/mmml_workflow.png" alt="MMML workflow" width="78%">
+</p>
+
+The five modality families and the mathematical domains they are built on (panels B and C above):
 
 | Code | Modality family | Mathematical domain |
 | --- | --- | --- |
@@ -16,7 +24,7 @@ The mathematical modalities are rooted in algebraic topology, combinatorial spec
 | `EIC` | Element interactive curvature | differentiable manifold |
 | `FPRC` | Forman persistent Ricci curvature | simplicial complex |
 
-Each modality is paired with four neural architectures, spanning topological and conventional designs:
+The four neural architectures each modality is paired with (panel D above):
 
 | Code | Architecture |
 | --- | --- |
@@ -24,14 +32,6 @@ Each modality is paired with four neural architectures, spanning topological and
 | `CTNN` | Copresheaf transformer |
 | `ANN` | Artificial neural network |
 | `CNN` | Convolutional neural network |
-
-A consensus prediction is formed by aggregating selected modality-architecture base models.
-
-The manuscript validates MMML on four benchmarks: protein-ligand binding affinity, metal-organic framework gas uptake, mutation-induced protein solubility, and molecular toxicity. **This release focuses on the MOF gas-uptake and LD50 toxicity applications**, including precomputed features, final component settings, training scripts, and consensus utilities.
-
-<p align="center">
-  <img src="assets/mmml_workflow.png" alt="MMML workflow" width="78%">
-</p>
 
 ## Repository Structure
 
