@@ -3,9 +3,9 @@ requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "mitnn"
+name = "mmml"
 version = "0.1.0"
-description = "Mathematical Invariant-Enabled Topological Neural Networks"
+description = "Multi-Mathematical-Modal Learning for Molecules and Materials"
 requires-python = ">=3.10"
 readme = "README.md"
 dependencies = [

@@ -1,17 +1,42 @@
-# MITNN
+# MMML
+
+**Multi-Mathematical-Modal Learning for Molecules and Materials**
 
 ## Overview
 
-**MITNN** is a molecular and materials learning framework for studying how multiscale mathematical invariant representations interact with neural processing mechanisms. It maps three-dimensional molecular and materials structures to mathematical domains such as bipartite graphs, simplicial complexes, and differentiable manifolds; constructs complementary invariant families including persistent homology, persistent Laplacian, commutative-algebraic descriptors, element-interactive curvature, and Forman persistent Ricci curvature; and pairs these features with ANN, CNN, SNN, and CTNN architectures. This release focuses on the MOF gas-uptake and LD50 toxicity applications, including precomputed features, final component settings, training scripts, and consensus utilities.
+**MMML** is a learning framework that treats *mathematical diversity itself* as a source of multimodality. Instead of distinguishing modalities by data type or source, MMML derives multiple representations of the same scientific structure from distinct mathematical formulations, and pairs them with a diverse set of deep learning architectures.
+
+The mathematical modalities are rooted in algebraic topology, combinatorial spectral theory, commutative algebra, differential geometry, and discrete curvature. Three-dimensional molecular and materials structures are first mapped to mathematical domains such as bipartite graphs, simplicial complexes (Vietoris-Rips and alpha complexes), and differentiable manifolds. Five complementary modality families are then constructed from those domains:
+
+| Code | Modality family | Mathematical domain |
+| --- | --- | --- |
+| `CA` | Commutative algebra (facet, F-vector) | bipartite graph |
+| `PH` | Persistent homology | simplicial complex |
+| `PL` | Persistent Laplacian | simplicial complex |
+| `EIC` | Element interactive curvature | differentiable manifold |
+| `FPRC` | Forman persistent Ricci curvature | simplicial complex |
+
+Each modality is paired with four neural architectures, spanning topological and conventional designs:
+
+| Code | Architecture |
+| --- | --- |
+| `SNN` | Simplicial neural network |
+| `CTNN` | Copresheaf transformer |
+| `ANN` | Artificial neural network |
+| `CNN` | Convolutional neural network |
+
+A consensus prediction is formed by aggregating selected modality-architecture base models.
+
+The manuscript validates MMML on four benchmarks: protein-ligand binding affinity, metal-organic framework gas uptake, mutation-induced protein solubility, and molecular toxicity. **This release focuses on the MOF gas-uptake and LD50 toxicity applications**, including precomputed features, final component settings, training scripts, and consensus utilities.
 
 <p align="center">
-  <img src="assets/mitnn_workflow.png" alt="MITNN workflow" width="78%">
+  <img src="assets/mmml_workflow.png" alt="MMML workflow" width="78%">
 </p>
 
 ## Repository Structure
 
 ```text
-MITNN/
+MMML/
 |-- applications/
 |   |-- ld50/              # LD50 toxicity component training scripts
 |   `-- mof/               # MOF gas-uptake scripts and MOF CTNN model
@@ -21,7 +46,7 @@ MITNN/
 |-- docs/                  # Additional notes on data, features, architectures, and environment
 |-- metadata/              # Machine-readable final model settings and reported metrics
 |-- scripts/               # Training dispatcher, evaluation, consensus, and audit utilities
-|-- src/mitnn/             # Reusable architecture definitions
+|-- src/mmml/              # Reusable architecture definitions
 |-- environment.yml
 |-- requirements.txt
 `-- README.md
@@ -31,7 +56,7 @@ MITNN/
 
 The released feature archives are hosted on Google Drive:
 
-[MITNN final feature archives](https://drive.google.com/drive/folders/1Y5hwU1WikPbT5pzhIL0ocmJcf9MWE1mv)
+[MMML final feature archives](https://drive.google.com/drive/folders/1Y5hwU1WikPbT5pzhIL0ocmJcf9MWE1mv)
 
 The folder is expected to contain:
 
@@ -39,6 +64,8 @@ The folder is expected to contain:
 MITNN_MOF_final_features.zip
 MITNN_LD50_final_features.zip
 ```
+
+The archive file names keep the earlier `MITNN_` prefix.
 
 A concise manifest of the released feature groups is provided in:
 
@@ -53,15 +80,15 @@ The feature archives are intentionally not stored directly in the Git repository
 Clone the repository:
 
 ```bash
-git clone https://github.com/yren24/MITNN.git
-cd MITNN
+git clone https://github.com/yren24/MMML.git
+cd MMML
 ```
 
 Create the recommended Conda environment:
 
 ```bash
 conda env create -f environment.yml
-conda activate mitnn
+conda activate mmml
 ```
 
 Alternatively, install the Python requirements into an existing environment:
@@ -85,8 +112,7 @@ unzip MITNN_MOF_final_features.zip
 unzip MITNN_LD50_final_features.zip
 ```
 
-This should create the `data/mof/` and `data/ld50/` directories shown above. The application scripts use these compact feature family names directly: `PH`, `PL`, `CA`, `EIC`, and `FPRC`.
-
+This should create the `data/mof/` and `data/ld50/` directories shown above. The application scripts use these compact modality family names directly: `PH`, `PL`, `CA`, `EIC`, and `FPRC`.
 
 To verify a downloaded feature package before training:
 
@@ -100,10 +126,10 @@ The audit checks that every label entry has the expected `.npy` feature file und
 
 ## Training
 
-Each component is defined by an application, an invariant family, and a neural architecture:
+Each component is defined by an application, a mathematical modality, and a neural architecture:
 
 ```text
-application + invariant + architecture
+application + modality + architecture
 ```
 
 Examples:
@@ -118,7 +144,7 @@ The helper dispatcher in `scripts/train.py` builds the appropriate application c
 ```bash
 python scripts/train.py \
     --application ld50 \
-    --invariant EIC \
+    --modality EIC \
     --architecture CTNN
 ```
 
@@ -127,7 +153,7 @@ MOF O2 uptake with CA-CNN:
 ```bash
 python scripts/train.py \
     --application mof_o2 \
-    --invariant CA \
+    --modality CA \
     --architecture CNN
 ```
 
@@ -136,7 +162,7 @@ Arguments not consumed by the dispatcher are forwarded to the application script
 ```bash
 python scripts/train.py \
     --application ld50 \
-    --invariant FPRC \
+    --modality FPRC \
     --architecture SNN \
     --epochs 300 \
     --batch-size 256
@@ -145,6 +171,8 @@ python scripts/train.py \
 The underlying application scripts can also be called directly from `applications/mof/` or `applications/ld50/`.
 
 Use `--no-final-defaults` if you want the raw defaults of the application scripts instead of the final-component settings from `metadata/`.
+
+> The earlier flag name `--invariant` is still accepted as a deprecated alias of `--modality`.
 
 ## Evaluation
 
@@ -159,7 +187,7 @@ python scripts/evaluate.py \
 
 ## Final Consensus
 
-The released workflow treats a consensus model as an average over selected invariant-architecture component predictions. After training the selected components and saving their ensemble prediction arrays, prepare a manifest CSV:
+The released workflow treats a consensus model as an average over selected modality-architecture component predictions. After training the selected components and saving their ensemble prediction arrays, prepare a manifest CSV:
 
 ```text
 component,pred_path,true_path,names_path,weight
@@ -182,12 +210,12 @@ The consensus script aligns samples by name, checks target consistency, averages
 
 ## Citation
 
-If you use this repository, please cite the MITNN manuscript:
+If you use this repository, please cite the MMML manuscript:
 
 ```bibtex
-@misc{ren2026mitnn,
-  title  = {MITNN: Mathematical Invariant-Enabled Topological Neural Networks for Molecular and Materials Property Prediction},
-  author = {Ren, Yiming and Liu, Xiang and Hajij, Mustafa and Lio, Pietro and Wei, Guo-Wei},
+@misc{ren2026mmml,
+  title  = {Multi-Mathematical-Modal Learning for Molecules and Materials},
+  author = {Ren, Yiming and Liu, Xiang and Vermaas, Josh V. and Hajij, Mustafa and Li{\`o}, Pietro and Wei, Guo-Wei},
   year   = {2026}
 }
 ```

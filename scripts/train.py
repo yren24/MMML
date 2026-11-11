@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Dispatch MITNN component training commands."""
+"""Dispatch MMML component training commands."""
 
 from __future__ import annotations
 
@@ -12,15 +12,15 @@ import sys
 from utils import (
     APPLICATION_SCRIPTS,
     DEFAULT_LD50_SNN_LR,
-    INVARIANT_TO_TOPOLOGY,
-    LD50_INVARIANTS,
-    MOF_INVARIANTS,
+    MODALITY_TO_TOPOLOGY,
+    LD50_MODALITIES,
+    MOF_MODALITIES,
     MOF_TARGETS,
     REPO_ROOT,
     has_option,
     normalize_application,
     normalize_architecture,
-    normalize_invariant,
+    normalize_modality,
 )
 
 
@@ -97,9 +97,9 @@ def final_row_for_ld50(architecture, topology):
     return None
 
 
-def ld50_feature_root_tag(architecture, topology, invariant):
+def ld50_feature_root_tag(architecture, topology, modality):
     if topology != "curvature":
-        return invariant
+        return modality
     if architecture in CURVATURE_BIDIRECTIONAL_ARCHES:
         return "EIC/bidirectional"
     return "EIC/single_direction"
@@ -187,15 +187,15 @@ def apply_ld50_final_defaults(command, passthrough, architecture, topology):
 
 def build_command(args: argparse.Namespace, passthrough: list[str]) -> list[str]:
     app = normalize_application(args.application)
-    invariant = normalize_invariant(args.invariant)
+    modality = normalize_modality(args.modality)
     architecture = normalize_architecture(args.architecture)
-    topology = INVARIANT_TO_TOPOLOGY[invariant]
+    topology = MODALITY_TO_TOPOLOGY[modality]
 
     family = "ld50" if app == "ld50" else "mof"
-    if family == "mof" and invariant not in MOF_INVARIANTS:
-        raise ValueError(f"{invariant} is not released for the MOF application.")
-    if family == "ld50" and invariant not in LD50_INVARIANTS:
-        raise ValueError(f"{invariant} is not released for the LD50 application.")
+    if family == "mof" and modality not in MOF_MODALITIES:
+        raise ValueError(f"{modality} is not released for the MOF application.")
+    if family == "ld50" and modality not in LD50_MODALITIES:
+        raise ValueError(f"{modality} is not released for the LD50 application.")
 
     script = APPLICATION_SCRIPTS[family].get(architecture)
     if script is None:
@@ -206,15 +206,15 @@ def build_command(args: argparse.Namespace, passthrough: list[str]) -> list[str]
         property_name = MOF_TARGETS[app]
         command.extend(["--property", property_name, "--topology", topology])
         if architecture in {"ANN", "GBT"}:
-            command.extend(["--feature-dir", f"data/mof/features/{invariant}"])
+            command.extend(["--feature-dir", f"data/mof/features/{modality}"])
         if args.final_defaults:
             apply_mof_final_defaults(command, passthrough, app, architecture, topology)
     else:
-        feature_root_tag = ld50_feature_root_tag(architecture, topology, invariant)
+        feature_root_tag = ld50_feature_root_tag(architecture, topology, modality)
         if architecture == "SNN":
             command.extend(["--method", topology, "--feature-root-tag", feature_root_tag])
             if not args.final_defaults and not has_option(passthrough, "--lr"):
-                command.extend(["--lr", DEFAULT_LD50_SNN_LR[invariant]])
+                command.extend(["--lr", DEFAULT_LD50_SNN_LR[modality]])
         else:
             command.extend(["--features", topology, "--feature-root-tag", feature_root_tag])
         if args.final_defaults:
@@ -227,12 +227,18 @@ def build_command(args: argparse.Namespace, passthrough: list[str]) -> list[str]
 def parse_args() -> tuple[argparse.Namespace, list[str]]:
     parser = argparse.ArgumentParser(
         description=(
-            "Run a MITNN application component defined by application, "
-            "mathematical invariant, and neural architecture."
+            "Run an MMML application component defined by application, "
+            "mathematical modality, and neural architecture."
         )
     )
     parser.add_argument("--application", required=True, help="mof_o2, mof_n2, mof, or ld50")
-    parser.add_argument("--invariant", required=True, help="PH, PL, CA, EIC, or FPRC")
+    parser.add_argument(
+        "--modality",
+        "--invariant",
+        dest="modality",
+        required=True,
+        help="PH, PL, CA, EIC, or FPRC (--invariant is accepted as a deprecated alias)",
+    )
     parser.add_argument("--architecture", required=True, help="ANN, CNN, SNN, CTNN, or GBT")
     parser.add_argument("--no-final-defaults", dest="final_defaults", action="store_false", help="Use application script defaults instead of metadata final-component settings.")
     parser.set_defaults(final_defaults=True)

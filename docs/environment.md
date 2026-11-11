@@ -1,6 +1,6 @@
 # Environment Notes
 
-The public MITNN code paths use NumPy, SciPy, scikit-learn, PyTorch, pandas, and PyTorch Geometric.
+The public MMML code paths use NumPy, SciPy, scikit-learn, PyTorch, pandas, and PyTorch Geometric.
 
 ## Recommended Files
 

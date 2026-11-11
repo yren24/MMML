@@ -1,4 +1,4 @@
-name: mitnn
+name: mmml
 channels:
   - pytorch
   - nvidia

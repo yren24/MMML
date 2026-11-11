@@ -1,4 +1,4 @@
-"""Fully connected regression network used by the MITNN ANN baselines."""
+"""Fully connected regression network used by the MMML ANN baselines."""
 
 from __future__ import annotations
 

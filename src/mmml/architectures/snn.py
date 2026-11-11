@@ -1,4 +1,4 @@
-"""Simplicial-style graph regressors used by the MITNN SNN experiments."""
+"""Simplicial-style graph regressors used by the MMML SNN experiments."""
 
 from __future__ import annotations
 

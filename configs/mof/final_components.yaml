@@ -4,7 +4,7 @@ targets:
   - N2uptakemolkg
 data_dir: data/mof/2STD
 feature_dir: data/mof/features
-invariants:
+modalities:
   PH:
     path: data/mof/features/PH
     topology_key: homology

@@ -1,6 +1,14 @@
 {
   "paper": {
-    "title": "MITNN: Mathematical Invariant-Enabled Topological Neural Networks",
+    "title": "Multi-Mathematical-Modal Learning for Molecules and Materials",
+    "authors": [
+      "Yiming Ren",
+      "Xiang Liu",
+      "Josh V. Vermaas",
+      "Mustafa Hajij",
+      "Pietro Li\u00f2",
+      "Guo-Wei Wei"
+    ],
     "tasks_in_this_repository": [
       "MOF O2/N2 uptake",
       "LD50 quantitative toxicity"

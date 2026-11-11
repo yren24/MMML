@@ -1,4 +1,4 @@
-application,target,invariant,expected_path,archive,notes
+application,target,modality,expected_path,archive,notes
 mof,O2 and N2,PH,data/mof/features/PH,MITNN_MOF_final_features.zip,persistent homology features
 mof,O2 and N2,PL,data/mof/features/PL,MITNN_MOF_final_features.zip,persistent Laplacian features
 mof,O2 and N2,CA,data/mof/features/CA,MITNN_MOF_final_features.zip,facet features

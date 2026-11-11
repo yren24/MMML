@@ -1,10 +1,10 @@
 # Architecture Summary
 
-MITNN evaluates the same mathematical invariant families with four neural architectures.
+MMML evaluates the same mathematical modality families with four neural architectures.
 
 ## ANN
 
-`src/mitnn/architectures/ann.py`
+`src/mmml/architectures/ann.py`
 
 The ANN is a batch-normalized MLP on flattened feature vectors:
 
@@ -19,7 +19,7 @@ Final hidden dimensions:
 
 ## CNN
 
-`src/mitnn/architectures/cnn.py`
+`src/mmml/architectures/cnn.py`
 
 The CNN treats the filtration or interaction-scale axis as a one-dimensional sequence:
 
@@ -34,7 +34,7 @@ Final presets:
 
 ## SNN
 
-`src/mitnn/architectures/snn.py`
+`src/mmml/architectures/snn.py`
 
 Two task-specific SNN forms are included:
 
@@ -45,7 +45,7 @@ The final LD50 pair-edge SNN uses `GATv2Conv` by default and requires `torch-geo
 
 ## CTNN / CoPresheaf
 
-`src/mitnn/architectures/ctnn.py`
+`src/mmml/architectures/ctnn.py`
 
 The CTNN is implemented as a CoPresheaf transformer:
 

@@ -1,4 +1,4 @@
-"""Shared command-building utilities for MITNN application scripts."""
+"""Shared command-building utilities for MMML application scripts."""
 
 from __future__ import annotations
 
@@ -7,7 +7,7 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 
-INVARIANT_TO_TOPOLOGY = {
+MODALITY_TO_TOPOLOGY = {
     "PH": "homology",
     "PL": "lap",
     "CA": "facet",
@@ -15,7 +15,7 @@ INVARIANT_TO_TOPOLOGY = {
     "FPRC": "forman",
 }
 
-LEGACY_INVARIANT_ALIASES = {
+LEGACY_MODALITY_ALIASES = {
     "EIC_BI": "EIC",
 }
 
@@ -41,8 +41,8 @@ APPLICATION_SCRIPTS = {
     },
 }
 
-MOF_INVARIANTS = {"PH", "PL", "CA", "FPRC"}
-LD50_INVARIANTS = {"PH", "PL", "CA", "EIC", "FPRC"}
+MOF_MODALITIES = {"PH", "PL", "CA", "FPRC"}
+LD50_MODALITIES = {"PH", "PL", "CA", "EIC", "FPRC"}
 
 DEFAULT_LD50_SNN_LR = {
     "PH": "8e-4",
@@ -64,12 +64,12 @@ def normalize_application(value: str) -> str:
     return app
 
 
-def normalize_invariant(value: str) -> str:
-    invariant = value.strip().upper().replace("-", "_")
-    invariant = LEGACY_INVARIANT_ALIASES.get(invariant, invariant)
-    if invariant not in INVARIANT_TO_TOPOLOGY:
-        raise ValueError(f"Unsupported invariant: {value}")
-    return invariant
+def normalize_modality(value: str) -> str:
+    modality = value.strip().upper().replace("-", "_")
+    modality = LEGACY_MODALITY_ALIASES.get(modality, modality)
+    if modality not in MODALITY_TO_TOPOLOGY:
+        raise ValueError(f"Unsupported modality: {value}")
+    return modality
 
 
 def normalize_architecture(value: str) -> str:

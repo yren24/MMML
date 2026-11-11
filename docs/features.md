@@ -36,4 +36,4 @@ pair rule = a in base, b in all, element_order[a] < element_order[b]
 
 The final LD50 setting uses maximum filtration 10, step 0.1, and `bond_delta=0`, with covalent bonds removed from the modified filtration matrix.
 
-The two EIC rows are encoding variants of the same invariant family, not separate mathematical invariants. `scripts/train.py` selects the correct final encoding from the architecture: ANN/CTNN use the bidirectional encoding, and CNN/SNN use the single-direction encoding.
+The two EIC rows are encoding variants of the same modality family, not separate mathematical modalities. `scripts/train.py` selects the correct final encoding from the architecture: ANN/CTNN use the bidirectional encoding, and CNN/SNN use the single-direction encoding.

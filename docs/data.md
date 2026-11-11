@@ -4,7 +4,7 @@ The final `.npy` features should live outside Git history and be distributed thr
 
 ## Download Link
 
-[MITNN final feature archives](https://drive.google.com/drive/folders/1Y5hwU1WikPbT5pzhIL0ocmJcf9MWE1mv)
+[MMML final feature archives](https://drive.google.com/drive/folders/1Y5hwU1WikPbT5pzhIL0ocmJcf9MWE1mv)
 
 Expected zip filenames:
 

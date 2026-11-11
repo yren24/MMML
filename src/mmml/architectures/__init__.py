@@ -1,4 +1,4 @@
-"""Neural architectures used in MITNN experiments."""
+"""Neural architectures used in MMML experiments."""
 
 from .ann import ANNRegressor
 from .cnn import CNN1DRegressor, CNNRegressor
